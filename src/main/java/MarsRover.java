@@ -2,35 +2,22 @@ public class MarsRover {
 
     public static final String ROTATE_LEFT = "L";
     private static final String ROTATE_RIGHT = "R";
-    public static final int MAX_HEIGHT = 10;
+
     public static final String MOVE = "M";
-    public static final int MAX_WIDTH = 10;
+
     private Direction direction;
+    private Grid grid;
 
     public MarsRover() {
+        this.grid = new Grid();
         this.direction = new Direction();
     }
 
     public String execute(String commands) {
-        int YPosition = 0;
-        int XPosition = 0;
 
         for (String command : commands.split("")) {
             if (command.equals(MOVE)) {
-                if (direction.facingto().equals("N")) {
-                    YPosition = (YPosition + 1) % MAX_HEIGHT;
-                }
-                if (direction.facingto().equals("S")) {
-                    YPosition = YPosition - 1;
-                    if (YPosition < 0) YPosition = MAX_HEIGHT - 1;
-                }
-                if (direction.facingto().equals("E")) {
-                    XPosition = (XPosition + 1) % MAX_WIDTH;
-                }
-                if (direction.facingto().equals("W")) {
-                    XPosition--;
-                    if(XPosition < 0) XPosition = MAX_WIDTH - 1;
-                }
+                grid.move(direction);
             }
             if (command.equals(ROTATE_RIGHT)) {
                 direction.turnRight();
@@ -39,6 +26,6 @@ public class MarsRover {
                 direction.turnLeft();
             }
         }
-        return XPosition + ":" + YPosition + ":" + direction.facingto();
+        return grid.currentXPosition() + ":" + grid.currentYPosition() + ":" + direction.facingto();
     }
 }
