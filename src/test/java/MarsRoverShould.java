@@ -60,4 +60,15 @@ public class MarsRoverShould {
 
         assertEquals(expectedPosition, currentPosition);
     }
+    @ParameterizedTest
+    @CsvSource({
+            "RM, 1:0:E",
+    })
+    void move_XAxis(String commands, String expectedPosition){
+        MarsRover marsRover = new MarsRover();
+
+        String currentPosition = marsRover.execute(commands);
+
+        assertEquals(expectedPosition, currentPosition);
+    }
 }
