@@ -31,4 +31,15 @@ public class MarsRoverShould {
 
         assertEquals(expectedPosition, currentPosition);
     }
+    @ParameterizedTest
+    @CsvSource({
+            "R, 0:0:E",
+    })
+    void rotate_right(String commands, String expectedPosition){
+        MarsRover marsRover = new MarsRover();
+
+        String currentPosition = marsRover.execute(commands);
+
+        assertEquals(expectedPosition, currentPosition);
+    }
 }
