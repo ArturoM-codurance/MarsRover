@@ -34,6 +34,7 @@ public class MarsRoverShould {
     @ParameterizedTest
     @CsvSource({
             "R, 0:0:E",
+            "RR, 0:0:S",
     })
     void rotate_right(String commands, String expectedPosition){
         MarsRover marsRover = new MarsRover();
