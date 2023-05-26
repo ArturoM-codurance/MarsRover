@@ -9,18 +9,14 @@ public class MarsRover {
     }
 
     public String execute(String commands) {
-        String YPosition = "0";
-        if (commands.equals("M")) {
-            YPosition = "1";
-        }
-        if (commands.equals("MM")) {
-            YPosition = "2";
-        }
-        if (commands.equals("MMM")) {
-            YPosition = "3";
-        }
+        int YPosition = 0;
 
         for (String command : commands.split("")) {
+            if(command.equals("M")){
+                if(direction.facingto().equals("N")){
+                    YPosition++;
+                }
+            }
             if (command.equals(ROTATE_RIGHT)) {
                 direction.turnRight();
             }
