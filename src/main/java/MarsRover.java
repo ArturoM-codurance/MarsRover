@@ -14,7 +14,7 @@ public class MarsRover {
         for (String command : commands.split("")) {
             if(command.equals("M")){
                 if(direction.facingto().equals("N")){
-                    YPosition++;
+                    YPosition = (YPosition + 1) % 10;
                 }
                 if(direction.facingto().equals("S")){
                     YPosition--;
