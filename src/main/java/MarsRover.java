@@ -17,7 +17,8 @@ public class MarsRover {
                     YPosition = (YPosition + 1) % 10;
                 }
                 if(direction.facingto().equals("S")){
-                    YPosition--;
+                    YPosition = YPosition - 1;
+                    if(YPosition < 0 ) YPosition = 10 - 1;
                 }
             }
             if (command.equals(ROTATE_RIGHT)) {
