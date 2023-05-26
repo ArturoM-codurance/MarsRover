@@ -12,18 +12,19 @@ public class MarsRover {
 
     public String execute(String commands) {
         int YPosition = 0;
+        int XPosition = 0;
 
         for (String command : commands.split("")) {
-            if(command.equals(MOVE)){
-                if(direction.facingto().equals("N")){
+            if (command.equals(MOVE)) {
+                if (direction.facingto().equals("N")) {
                     YPosition = (YPosition + 1) % MAX_HEIGHT;
                 }
-                if(direction.facingto().equals("S")){
+                if (direction.facingto().equals("S")) {
                     YPosition = YPosition - 1;
-                    if(YPosition < 0 ) YPosition = MAX_HEIGHT - 1;
+                    if (YPosition < 0) YPosition = MAX_HEIGHT - 1;
                 }
-                if(direction.facingto().equals("E")){
-                    return "1:0:E";
+                if (direction.facingto().equals("E")) {
+                    XPosition = XPosition + 1;
                 }
             }
             if (command.equals(ROTATE_RIGHT)) {
@@ -33,6 +34,6 @@ public class MarsRover {
                 direction.turnLeft();
             }
         }
-        return "0:" + YPosition + ":" + direction.facingto();
+        return XPosition + ":" + YPosition + ":" + direction.facingto();
     }
 }
