@@ -22,6 +22,9 @@ public class MarsRover {
                     YPosition = YPosition - 1;
                     if(YPosition < 0 ) YPosition = MAX_HEIGHT - 1;
                 }
+                if(direction.facingto().equals("E")){
+                    return "1:0:E";
+                }
             }
             if (command.equals(ROTATE_RIGHT)) {
                 direction.turnRight();
