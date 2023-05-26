@@ -9,9 +9,9 @@ public class MarsRover {
     }
 
     public String execute(String commands) {
-        String coordinates = "0:0:";
-        if(commands.equals("M")){
-            return "0:1:N";
+        String YPosition = "0";
+        if (commands.equals("M")) {
+            YPosition = "1";
         }
 
         for (String command : commands.split("")) {
@@ -22,6 +22,6 @@ public class MarsRover {
                 direction.turnLeft();
             }
         }
-        return coordinates + direction.facingto();
+        return "0:" + YPosition + ":" + direction.facingto();
     }
 }
