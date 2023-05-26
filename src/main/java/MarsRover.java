@@ -3,6 +3,7 @@ public class MarsRover {
     public static final String ROTATE_LEFT = "L";
 
     public String execute(String command) {
+
         if(command.equals(ROTATE_LEFT+ROTATE_LEFT+ROTATE_LEFT)){
             return "0:0:E";
         }
