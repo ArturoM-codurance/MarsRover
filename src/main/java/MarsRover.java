@@ -2,8 +2,9 @@ public class MarsRover {
 
     public static final String ROTATE_LEFT = "L";
     private static final String ROTATE_RIGHT = "R";
-    public static final int MAX_HEIGHT = 10;
+    public static final int MAX_HEIGHT = MAX_WIDTH;
     public static final String MOVE = "M";
+    public static final int MAX_WIDTH = 10;
     private Direction direction;
 
     public MarsRover() {
@@ -24,7 +25,7 @@ public class MarsRover {
                     if (YPosition < 0) YPosition = MAX_HEIGHT - 1;
                 }
                 if (direction.facingto().equals("E")) {
-                    XPosition = (XPosition + 1) % 10;
+                    XPosition = (XPosition + 1) % MAX_WIDTH;
                 }
             }
             if (command.equals(ROTATE_RIGHT)) {
