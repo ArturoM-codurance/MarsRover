@@ -16,6 +16,9 @@ public class MarsRover {
                 if(direction.facingto().equals("N")){
                     YPosition++;
                 }
+                if(direction.facingto().equals("S")){
+                    YPosition--;
+                }
             }
             if (command.equals(ROTATE_RIGHT)) {
                 direction.turnRight();
