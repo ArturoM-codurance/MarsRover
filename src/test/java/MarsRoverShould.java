@@ -35,6 +35,7 @@ public class MarsRoverShould {
     @CsvSource({
             "R, 0:0:E",
             "RR, 0:0:S",
+            "RRR, 0:0:W",
     })
     void rotate_right(String commands, String expectedPosition){
         MarsRover marsRover = new MarsRover();
