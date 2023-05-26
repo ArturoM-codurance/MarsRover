@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.concurrent.SubmissionPublisher;
 
@@ -15,13 +17,15 @@ public class MarsRoverShould {
         String expectedPosition = "0:0:N";
         assertEquals(expectedPosition, currentPosition);
     }
-    @Test
-    void be_at_position_0_0_W_when_single_L_received(){
+    @ParameterizedTest
+    @CsvSource({
+            "L, 0:0:W",
+    })
+    void rotate_left(String commands, String expectedPosition){
         MarsRover marsRover = new MarsRover();
 
-        String currentPosition = marsRover.execute("L");
+        String currentPosition = marsRover.execute(commands);
 
-        String expectedPosition = "0:0:W";
         assertEquals(expectedPosition, currentPosition);
     }
 }
