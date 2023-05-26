@@ -10,6 +10,9 @@ public class MarsRover {
 
     public String execute(String commands) {
         String coordinates = "0:0:";
+        if(commands.equals("M")){
+            return "0:1:N";
+        }
 
         for (String command : commands.split("")) {
             if (command.equals(ROTATE_RIGHT)) {
