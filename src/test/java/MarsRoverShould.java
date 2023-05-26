@@ -65,6 +65,7 @@ public class MarsRoverShould {
             "RM, 1:0:E",
             "RMM, 2:0:E",
             "RMMMMMMMMMM, 0:0:E",
+            "LM, 9:0:E",
     })
     void move_XAxis(String commands, String expectedPosition){
         MarsRover marsRover = new MarsRover();
