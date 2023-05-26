@@ -2,7 +2,7 @@ public class MarsRover {
 
     public static final String ROTATE_LEFT = "L";
     private static final String ROTATE_RIGHT = "R";
-    public static final int MAX_HEIGHT = MAX_WIDTH;
+    public static final int MAX_HEIGHT = 10;
     public static final String MOVE = "M";
     public static final int MAX_WIDTH = 10;
     private Direction direction;
