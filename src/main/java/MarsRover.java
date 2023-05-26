@@ -3,18 +3,21 @@ public class MarsRover {
     public static final String ROTATE_LEFT = "L";
 
     public String execute(String command) {
+        String coordinates = "0:0:";
+        String direction = "N";
+
         if(command.equals("R")){
-            return "0:0:E";
+            direction = "E";
         }
         if(command.equals(ROTATE_LEFT+ROTATE_LEFT+ROTATE_LEFT)){
-            return "0:0:E";
+            direction = "E";
         }
         if(command.equals(ROTATE_LEFT+ROTATE_LEFT)){
-            return "0:0:S";
+            direction = "S";
         }
         if(command.equals(ROTATE_LEFT)){
-            return "0:0:W";
+            direction = "W";
         }
-        return "0:0:N";
+        return coordinates + direction;
     }
 }
