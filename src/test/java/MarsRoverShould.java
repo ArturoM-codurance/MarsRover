@@ -48,6 +48,7 @@ public class MarsRoverShould {
     @CsvSource({
             "M, 0:1:N",
             "MM, 0:2:N",
+            "MMM, 0:3:N",
     })
     void move_YAxis(String commands, String expectedPosition){
         MarsRover marsRover = new MarsRover();
