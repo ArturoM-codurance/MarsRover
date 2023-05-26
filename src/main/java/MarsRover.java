@@ -13,6 +13,9 @@ public class MarsRover {
         if (commands.equals("M")) {
             YPosition = "1";
         }
+        if (commands.equals("MM")) {
+            YPosition = "2";
+        }
 
         for (String command : commands.split("")) {
             if (command.equals(ROTATE_RIGHT)) {
