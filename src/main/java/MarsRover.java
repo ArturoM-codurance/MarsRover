@@ -1,29 +1,54 @@
 public class MarsRover {
 
     public static final String ROTATE_LEFT = "L";
+    private static final String ROTATE_RIGHT = "R";
 
-    public String execute(String command) {
+    public String execute(String commands) {
         String coordinates = "0:0:";
-        String direction = "N";
+        Direction direction = Direction.NORTH;
 
-        if(command.equals("RRR")){
-            direction = "W";
+        for (String command : commands.split("")) {
+            if (command.equals(ROTATE_RIGHT)) {
+                direction = turnRight(direction);
+            }
+            if (command.equals(ROTATE_LEFT)) {
+                direction = turnLeft(direction);
+            }
         }
-        if(command.equals("RR")){
-            direction = "S";
+        return coordinates + direction.getValue();
+    }
+
+    private static Direction turnRight(Direction currentDirection) {
+        switch (currentDirection) {
+            case NORTH -> {
+                return Direction.EAST;
+            }
+            case EAST -> {
+                return Direction.SOUTH;
+            }
+            case SOUTH -> {
+                return Direction.WEST;
+            }
+            default -> {
+                return Direction.NORTH;
+            }
         }
-        if(command.equals("R")){
-            direction = "E";
+    }
+
+    private static Direction turnLeft(Direction currentDirection) {
+        switch (currentDirection) {
+            case NORTH -> {
+                return Direction.WEST;
+            }
+            case EAST -> {
+                return Direction.NORTH;
+            }
+            case SOUTH -> {
+                return Direction.EAST;
+            }
+            default -> {
+                return Direction.SOUTH;
+            }
         }
-        if(command.equals(ROTATE_LEFT+ROTATE_LEFT+ROTATE_LEFT)){
-            direction = "E";
-        }
-        if(command.equals(ROTATE_LEFT+ROTATE_LEFT)){
-            direction = "S";
-        }
-        if(command.equals(ROTATE_LEFT)){
-            direction = "W";
-        }
-        return coordinates + direction;
     }
 }
