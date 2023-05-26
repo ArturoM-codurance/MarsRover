@@ -6,11 +6,14 @@ public class MarsRover {
         String coordinates = "0:0:";
         String direction = "N";
 
-        if(command.equals("R")){
-            direction = "E";
+        if(command.equals("RRR")){
+            direction = "W";
         }
         if(command.equals("RR")){
             direction = "S";
+        }
+        if(command.equals("R")){
+            direction = "E";
         }
         if(command.equals(ROTATE_LEFT+ROTATE_LEFT+ROTATE_LEFT)){
             direction = "E";
