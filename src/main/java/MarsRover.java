@@ -6,18 +6,12 @@ public class MarsRover {
 
 
     private Orientation orientation;
-    private Coordinate position ;
+    private Coordinates position;
 
-
-    private int XPosition;
-    private int YPosition;
-    private Grid grid;
 
     public MarsRover() {
         this.orientation = new North();
-        this.position = new Coordinate(0,0);
-        this.XPosition = 0;
-        this.YPosition = 0;
+        this.position = new Coordinates(0,0);
     }
 
     public String execute(String commands) {
@@ -38,16 +32,12 @@ public class MarsRover {
 
     private void moveForward() {
         Movement movement = orientation.moveForward();
-
-        position = new Coordinate(position.getX() + movement.x(), position.getY() + movement.y());
-//        XPosition += movement.x();
-//        YPosition += movement.y();
+        position.updatePosition(movement);
     }
 
     private String buildOutput() {
         return position.getX() + ":" + position.getY() + ":" + orientation;
     }
-
 
     public void turnRight() {
         orientation = orientation.turnRight();

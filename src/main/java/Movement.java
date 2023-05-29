@@ -2,9 +2,9 @@ public class Movement {
     private final int xInt;
     private final int yInt;
 
-    public Movement(int xInt, int yint) {
+    public Movement(int xInt, int yInt) {
         this.xInt = xInt;
-        yInt = yint;
+        this.yInt = yInt;
     }
 
     public int x() {
