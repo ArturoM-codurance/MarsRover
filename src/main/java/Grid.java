@@ -12,22 +12,22 @@ public class Grid {
         YPosition = 0;
     }
 
-    public void move(Direction direction){
-        if (direction.facingto().equals("N")) {
-            YPosition = (YPosition + 1) % MAX_HEIGHT;
-        }
-        if (direction.facingto().equals("S")) {
-            YPosition = YPosition - 1;
-            if (YPosition < 0) YPosition = MAX_HEIGHT - 1;
-        }
-        if (direction.facingto().equals("E")) {
-            XPosition = (XPosition + 1) % MAX_WIDTH;
-        }
-        if (direction.facingto().equals("W")) {
-            XPosition = XPosition - 1;
-            if(XPosition < 0) XPosition = MAX_WIDTH - 1;
-        }
-    }
+//    public Movement move(Orientation orientation){
+//        if (direction.facingto().equals("N")) {
+//            YPosition = (YPosition + 1) % MAX_HEIGHT;
+//        }
+//        if (direction.facingto().equals("S")) {
+//            YPosition = YPosition - 1;
+//            if (YPosition < 0) YPosition = MAX_HEIGHT - 1;
+//        }
+//        if (direction.facingto().equals("E")) {
+//            XPosition = (XPosition + 1) % MAX_WIDTH;
+//        }
+//        if (direction.facingto().equals("W")) {
+//            XPosition = XPosition - 1;
+//            if(XPosition < 0) XPosition = MAX_WIDTH - 1;
+//        }
+//    }
 
 
     public int currentXPosition() {
