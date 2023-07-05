@@ -32,13 +32,7 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: build
-      - name: Archive test report
-        uses: actions/upload-artifact@v2
-        with:
-          name: Test report
-          path: build/reports/tests/test
-
+          arguments: shadowJar
 
       # Checkout the repository to the GitHub Actions runner
       - name: Checkout
