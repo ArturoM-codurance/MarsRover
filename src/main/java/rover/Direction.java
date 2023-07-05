@@ -1,3 +1,5 @@
+package rover;
+
 public class Direction {
 
     public static final String NORTH = "N";
