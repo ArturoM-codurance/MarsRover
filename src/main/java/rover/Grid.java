@@ -1,3 +1,7 @@
+package rover;
+
+import rover.Direction;
+
 public class Grid {
 
     private int XPosition;

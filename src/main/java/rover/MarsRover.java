@@ -1,3 +1,5 @@
+package rover;
+
 public class MarsRover {
 
     public static final String ROTATE_LEFT = "L";
