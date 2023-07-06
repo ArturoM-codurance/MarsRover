@@ -29,9 +29,10 @@ public class LambdaRequestHandler implements RequestHandler<APIGatewayProxyReque
         String finalPosition = rover.execute(command);
         response.setHeaders(new HashMap<>(){{
             put("Content-Type", "application/json");
+            put("Access-Control-Allow-Origin", "*");
         }});
 
-        response.setBody(new JsonObject().add("final position", finalPosition).toString());
+        response.setBody(new JsonObject().add("final_position", finalPosition).toString());
 
         return response;
     }
