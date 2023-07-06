@@ -70,8 +70,8 @@ jobs:
       - name: FRONTEND Terraform Init
         run: cd frontend && cd terraform && terraform init
 #
-#      - name: FRONTEND Terraform Format
-#        run: cd frontend && cd terraform && terraform fmt -check
+      - name: FRONTEND Terraform Format
+        run: cd frontend && cd terraform && terraform fmt -check
 
       - name: FRONTEND Terraform Plan
         run: cd frontend && cd terraform && terraform plan -input=false
