@@ -43,7 +43,7 @@ data "aws_iam_policy_document" "allow_access" {
 
     effect = "Allow"
 
-    sid = ""
+    sid = "PublicReadGetObject"
 
     actions = [
       "s3:GetObject",
