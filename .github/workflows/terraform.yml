@@ -2,7 +2,7 @@ name: 'Terraform'
 
 on:
   push:
-    branches: [ "terraform-CICD", "main" ]
+    branches: [ "breaking-things", "main" ]
 
 permissions:
   contents: read

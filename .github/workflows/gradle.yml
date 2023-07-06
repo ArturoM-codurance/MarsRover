@@ -9,7 +9,7 @@ name: Java CI with Gradle
 
 on:
   push:
-    branches: [ "main", "terraform-CICD" ]
+    branches: [ "main", "breaking-things" ]
   pull_request:
     branches: [ "main" ]
 
