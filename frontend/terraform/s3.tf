@@ -37,7 +37,7 @@ data "aws_iam_policy_document" "allow_access" {
   statement {
 
     principals {
-      type = "AWS"
+      type        = "AWS"
       identifiers = ["*"]
     }
 
@@ -58,9 +58,9 @@ data "aws_iam_policy_document" "allow_access" {
 
 locals {
   mime_types = {
-    ".js": "text/javascript",
-    ".html": "text/html",
-    ".css": "text/css",
-    ".svg": "image/svg+xml"
+    ".js" : "text/javascript",
+    ".html" : "text/html",
+    ".css" : "text/css",
+    ".svg" : "image/svg+xml"
   }
 }
