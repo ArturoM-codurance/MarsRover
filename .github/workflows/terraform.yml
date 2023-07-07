@@ -59,10 +59,10 @@ jobs:
         run: cd terraform && terraform apply -auto-approve -input=false
 
       - name: Backend Obtain lambda URL
-        run: cd terraform && echo "frontend_endpoint=$(terraform output -raw frontend_endpoint)" >> "$GITHUB_ENV"
+        run: cd terraform && echo "invocation_url=$(terraform output -raw invocation_url)" >> "$GITHUB_ENV"
 
       - name: Frontend generate .env file
-        run: cd frontend && echo "${{env.frontend_endpoint}}" > .env
+        run: cd frontend && echo "VITE_LAMBDA_URL=${{env.invocation_url}}" > .env
 
       - name: Frontend build frontend
         run: cd frontend && yarn && yarn build
