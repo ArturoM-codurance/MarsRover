@@ -1,0 +1,19 @@
+title This is a title
+
+participant User
+participant Web
+participant Web Service
+participant Lambda
+participant MarsRover
+
+box over Web, Web Service: frontend
+box over Lambda, MarsRover: backend
+
+User->Web: type command
+Web->Web Service:input form command
+Web Service-> Lambda:command in body
+Lambda -> MarsRover: execute ("command")
+MarsRover ->Lambda: return final position
+Lambda ->Web Service: fetch response body with final position
+Web Service ->Web:pass position to component
+Web ->User: display final position
