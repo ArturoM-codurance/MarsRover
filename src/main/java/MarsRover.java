@@ -1,49 +1,56 @@
 public class MarsRover {
 
-    public static final String ROTATE_LEFT = "L";
-    private static final String ROTATE_RIGHT = "R";
-    public static final String MOVE = "M";
+    static final int MAX_X = 10;
+    static final int MAX_Y = 10;
+    private static final String NORTH = "N";
+    private static final String EAST = "E";
+    private static final String WEST = "W";
+    private static final String SOUTH = "S";
+    private final RotateRight rotateRight = new RotateRight(this);
+    private final RotateLeft rotateLeft = new RotateLeft(this);
+    private final MoveForwards moveForwards = new MoveForwards(this);
+    int y;
+    int x;
 
 
-    private Orientation orientation;
-    private Coordinates position;
+    private String orientation;
 
 
     public MarsRover() {
-        this.orientation = new North();
-        this.position = new Coordinates(0,0);
+        this.orientation = NORTH;
     }
 
     public String execute(String commands) {
 
         for (String command : commands.split("")) {
-            if (command.equals(MOVE)) {
-                moveForward();
-            }
-            if (command.equals(ROTATE_RIGHT)) {
-                turnRight();
-            }
-            if (command.equals(ROTATE_LEFT)) {
-                turnLeft();
-            }
+            moveForwards.run(command);
+            rotateRight.run(command);
+            rotateLeft.run(command);
         }
-        return buildOutput();
+        return x + ":" + y + ":" + orientation;
     }
 
-    private void moveForward() {
-        Movement movement = orientation.moveForward();
-        position.updatePosition(movement);
+    public String getOrientation() {
+        return orientation;
     }
 
-    private String buildOutput() {
-        return position.getX() + ":" + position.getY() + ":" + orientation;
+    public void setOrientation(String orientation) {
+        this.orientation = orientation;
     }
 
-    public void turnRight() {
-        orientation = orientation.turnRight();
+    public int getY() {
+        return y;
     }
 
-    public void turnLeft() {
-        orientation = orientation.turnLeft();
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
     }
 }
