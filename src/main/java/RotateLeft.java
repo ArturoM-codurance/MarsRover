@@ -1,29 +1,12 @@
 public class RotateLeft {
     public static final String ROTATE_LEFT = "L";
-    private final MarsRover marsRover;
 
-    public RotateLeft(MarsRover marsRover) {
-        this.marsRover = marsRover;
+    public RotateLeft() {
     }
 
-    void run(String command) {
+    void run(String command, Orientation orientation) {
         if (command.equals(ROTATE_LEFT)) {
-            if (marsRover.getOrientation().equals("N")) {
-                marsRover.setOrientation("W");
-                return;
-            }
-            if (marsRover.getOrientation().equals("E")) {
-                marsRover.setOrientation("N");
-                return;
-            }
-            if (marsRover.getOrientation().equals("S")) {
-                marsRover.setOrientation("E");
-                return;
-            }
-            if (marsRover.getOrientation().equals("W")) {
-                marsRover.setOrientation("S");
-                return;
-            }
+            orientation.rotateLeft();
         }
     }
 }
