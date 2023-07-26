@@ -3,13 +3,14 @@ import java.util.List;
 
 public class MarsRover {
 
-    private static final int MAX_HEIGHT = 10;
-    private static final int MAX_WIDTH = 10;
+    private final Grid grid;
     private String direction = "N";
 
+    public MarsRover(Grid grid) {
+        this.grid = grid;
+    }
+
     public String execute(String commands) {
-        int XCoordinate = 0;
-        int YCoordinate = 0;
 
         for (char command : commands.toCharArray()) {
 
@@ -24,23 +25,23 @@ public class MarsRover {
             }
 
             if (command == 'M') {
-                if (direction.equals("N")) YCoordinate++;
-                if (direction.equals("E")) XCoordinate++;
+                if (direction.equals("N")) grid.yCoordinate++;
+                if (direction.equals("E")) grid.xCoordinate++;
                 if (direction.equals("S")) {
-                    YCoordinate--;
-                    if (YCoordinate < 0) {
-                        YCoordinate = MAX_HEIGHT - 1;
+                    grid.yCoordinate--;
+                    if (grid.yCoordinate < 0) {
+                        grid.yCoordinate = grid.MAX_HEIGHT - 1;
                     }
                 }
                 if (direction.equals("W")) {
-                    XCoordinate--;
-                    if (XCoordinate < 0) {
-                        XCoordinate = MAX_WIDTH - 1;
+                    grid.xCoordinate--;
+                    if (grid.xCoordinate < 0) {
+                        grid.xCoordinate = grid.MAX_WIDTH - 1;
                     }
                 }
             }
         }
-        return XCoordinate + ":" + YCoordinate + ":" + direction;
+        return grid.xCoordinate + ":" + grid.yCoordinate + ":" + direction;
     }
 
     private String rotate(ArrayList directions) {

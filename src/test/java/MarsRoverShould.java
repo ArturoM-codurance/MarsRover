@@ -29,7 +29,8 @@ public class MarsRoverShould {
             " 'LM', '9:0:W'",
     })
     void be_at_position_when_commands_received(String input, String output) {
-        MarsRover marsRover = new MarsRover();
+        Grid grid = new Grid(10, 10);
+        MarsRover marsRover = new MarsRover(grid);
 
         String currentPosition = marsRover.execute(input);
 
