@@ -2,6 +2,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.util.List;
 import java.util.concurrent.SubmissionPublisher;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,7 +30,20 @@ public class MarsRoverShould {
             " 'LM', '9:0:W'",
     })
     void be_at_position_when_commands_received(String input, String output) {
-        Grid grid = new Grid(10, 10);
+        Grid grid = new Grid(10, 10, List.of());
+        MarsRover marsRover = new MarsRover(grid);
+
+        String currentPosition = marsRover.execute(input);
+
+        assertEquals(output, currentPosition);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            " 'RMLM', 'O:1:1:N'",
+    })
+    void handle_obstacles(String input, String output) {
+        Grid grid = new Grid(10, 10, List.of(1, 2));
         MarsRover marsRover = new MarsRover(grid);
 
         String currentPosition = marsRover.execute(input);

@@ -6,6 +6,10 @@ public class MarsRover {
     private final Grid grid;
     private String direction = "N";
 
+    private List<Integer> obstaclesInXFound = new ArrayList<>();
+
+    private List<Integer> obstaclesInYFound = new ArrayList<>();
+
     public MarsRover(Grid grid) {
         this.grid = grid;
     }
@@ -25,6 +29,22 @@ public class MarsRover {
             }
 
             if (command == 'M') {
+                if (grid.obstacles.size() > 0) {
+                    Integer x = grid.obstacles.get(0);
+                    Integer y = grid.obstacles.get(1);
+
+                    List<Integer> nextCoordinate = resolveNextStep(grid.xCoordinate, grid.yCoordinate);
+
+                    int nextX = nextCoordinate.get(0);
+                    int nextY = nextCoordinate.get(1);
+
+                    if (x == nextX) {
+                        this.obstaclesInXFound.add(nextX);
+                    }
+
+                    this.obstaclesInYFound.add(nextY);
+                }
+
                 if (direction.equals("N")) grid.yCoordinate++;
                 if (direction.equals("E")) grid.xCoordinate++;
                 if (direction.equals("S")) {
@@ -41,7 +61,34 @@ public class MarsRover {
                 }
             }
         }
+
+        if (this.obstaclesInXFound.size() > 0) {
+            int x = this.obstaclesInXFound.get(1);
+            int y = this.obstaclesInYFound.get(1);
+
+            return "O:" + x + ":" + y + ":" + direction;
+        }
+
         return grid.xCoordinate + ":" + grid.yCoordinate + ":" + direction;
+    }
+
+    private List<Integer> resolveNextStep(int currentX, int currentY) {
+        if (direction.equals("N")) currentY++;
+        if (direction.equals("E")) currentX++;
+        if (direction.equals("S")) {
+            currentY--;
+            if (currentY < 0) {
+                currentY = grid.MAX_HEIGHT - 1;
+            }
+        }
+        if (direction.equals("W")) {
+            currentX--;
+            if (currentX < 0) {
+                currentX = grid.MAX_WIDTH - 1;
+            }
+        }
+
+        return List.of(currentX, currentY);
     }
 
     private String rotate(ArrayList directions) {
