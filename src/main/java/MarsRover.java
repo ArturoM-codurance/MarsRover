@@ -3,9 +3,13 @@ import java.util.List;
 
 public class MarsRover {
 
+    private static final int MAX_HEIGHT = 10;
+    private static final int MAX_WIDTH = 10;
     private String direction = "N";
+
     public String execute(String commands) {
-        String coordinates = "0:0:";
+        int XCoordinate = 0;
+        int YCoordinate = 0;
 
         for (char command : commands.toCharArray()) {
 
@@ -19,9 +23,24 @@ public class MarsRover {
                 direction = rotate(directionsClockwise);
             }
 
+            if (command == 'M') {
+                if (direction.equals("N")) YCoordinate++;
+                if (direction.equals("E")) XCoordinate++;
+                if (direction.equals("S")) {
+                    YCoordinate--;
+                    if (YCoordinate < 0) {
+                        YCoordinate = MAX_HEIGHT - 1;
+                    }
+                }
+                if (direction.equals("W")) {
+                    XCoordinate--;
+                    if (XCoordinate < 0) {
+                        XCoordinate = MAX_WIDTH - 1;
+                    }
+                }
+            }
         }
-
-        return coordinates + direction;
+        return XCoordinate + ":" + YCoordinate + ":" + direction;
     }
 
     private String rotate(ArrayList directions) {
